@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<title>Edu.School | {{title}}</title>
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+	<link href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.12.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.12.0/css/mdb.min.css" rel="stylesheet">
+
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'style/style.css' %}">
+</head>
+<body>
+	
+	<header class="container-fluid unique-color-dark py-2 position-fixed z-depth-1">
+		<div class="row">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<nav class="navbar navbar-expand-lg navbar-dark z-depth-0">
+							<a class="navbar-brand text-uppercase font-weight-bold" href="{% url 'index' %}">
+								Edu<i class="fas fa-graduation-cap orange-text"></i>School
+							</a>
+
+							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigator" aria-controls="navigator"
+							aria-expanded="false"aria-label="Toggle navigation">
+										<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="navigator">
+								<ul class="navbar-nav ml-auto" id="main-menu">
+									<li class="nav-item mx-lg-1 mx-xl-2">
+										<a class="nav-link" href="#">Courses</a>
+									</li>
+									<li class="nav-item mx-lg-1 mx-xl-2">
+										<a class="nav-link" href="#">Events <sup class="text-warning">free</sup></a>
+									</li>
+									<li class="nav-item mx-lg-1 mx-xl-2">
+										<a class="nav-link" href="#">Teachers</a>
+									</li>
+									<li class="nav-item mx-lg-1 mx-xl-2">
+										<a class="nav-link" href="#">Reviews</a>
+									</li>
+									<li class="nav-item mx-lg-1 mx-xl-2">
+										<a class="nav-link" href="#">About us</a>
+									</li>
+									<li class="nav-item mx-lg-1 mx-xl-2">
+										<a class="nav-link" href="#">Contacts</a>
+									</li>
+									<li class="nav-item mx-lg-1 mx-xl-2">
+										<a class="nav-link waves-effect waves-light text-muted">
+											<i class="fa fa-search"></i>
+										</a>
+									</li>
+									{% if user.is_authenticated %}
+									<li class="nav-item ml-lg-1 ml-xl-2">
+										<a href="#" title="user profile">
+											<div class="avatar-photo"></div>
+										</a>
+									</li>
+									{% else %}
+									<li class="nav-item ml-lg-1 ml-xl-2">
+										<a href="#" title="login" class="nav-link waves-effect waves-light">
+											<i class="fa fa-user"></i>
+										</a>
+									</li>
+									{% endif %}
+								</ul>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	{% block content %}{% endblock %}
+
+	<footer class="container-fluid elegant-color-dark py-5"></footer>
+
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.12.0/js/mdb.min.js"></script>
+	<script>
+        $(window).scroll(function() {    
+            var scroll = $(window).scrollTop();
+            if (scroll >= 300) {
+                $("header").removeClass("py-2").addClass("py-1");
+                if (scroll >= 600) {
+                	$("header").removeClass("py-1");
+                }
+            } else {
+                $("header").addClass("py-2");
+            }
+        });
+	</script>
+	{% block scripts %}{% endblock %}
+</body>
+</html>

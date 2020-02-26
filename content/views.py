@@ -9,6 +9,25 @@ def index(request):
 		'index.html',
 		{
 			'title':'Online IT school',
-			'year': datetime.now().year,
+		}
+	)
+
+def courses(request):
+	return render(
+		request,
+		'courses.html',
+		{
+			'title':'Courses list',
+			'style':'courses',
+		}
+	)
+
+def teachers(request):
+	return render(
+		request,
+		'teachers.html',
+		{
+			'title':'Teachers staff',
+			'style':'teachers',
 		}
 	)
